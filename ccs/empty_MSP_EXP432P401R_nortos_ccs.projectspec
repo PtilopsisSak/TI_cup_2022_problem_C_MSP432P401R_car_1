@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+    <applicability>
+        <when>
+            <context
+                deviceFamily="MSP432"
+                deviceId="MSP432P401R"
+            />
+        </when>
+    </applicability>
+
+    <project
+        title="EMPTY"
+        name="empty_MSP_EXP432P401R_nortos_ccs"
+        configurations="Debug"
+        toolChain="TI"
+        connection="TIXDS110_Connection.xml"
+        device="MSP432P401R"
+        ignoreDefaultDeviceSettings="true"
+        ignoreDefaultCCSSettings="true"
+        products="com.ti.SIMPLELINK_MSP432_SDK"
+        compilerBuildOptions="
+            -I${PROJECT_ROOT}
+            -I${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source
+            -I${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source/third_party/CMSIS/Include
+            -D__MSP432P401R__
+            -DDeviceFamily_MSP432P401x
+            --advice:power=none
+            --silicon_version=7M4
+            --code_state=16
+            --little_endian
+            --display_error_number
+            --diag_warning=255
+            --diag_wrap=off
+            --gen_func_subsections=on
+            --float_support=FPv4SPD16
+            --symdebug:dwarf
+            -I${CG_TOOL_ROOT}/include
+        "
+        linkerBuildOptions="
+            --stack_size=512
+            -i${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source
+            -lti/display/lib/display.aem4f
+            -lti/grlib/lib/ccs/m4f/grlib.a
+            -lthird_party/spiffs/lib/ccs/m4f/spiffs.a
+            -lti/drivers/lib/drivers_msp432p401x.aem4f
+            -lthird_party/fatfs/lib/ccs/m4f/fatfs.a
+            -lti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib
+            --warn_sections
+            --display_error_number
+            --diag_wrap=off
+            --rom_model
+            -i${CG_TOOL_ROOT}/lib
+            -llibc.a
+        "
+        description="TODO: Write description">
+
+        <property name="buildProfile" value="release"/>
+        <property name="isHybrid" value="true"/>
+        <group id="empty.SIMPLELINK_MSP432_SDK.MSP_EXP432P401R.driverlib.TI"/>
+        <file path="../main.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../system_msp432p401r.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../ccs/startup_msp432p401r_ccs.c" openOnCreation="false" excludeFromBuild="false" action="copy" targetDirectory="ccs">
+        </file>
+        <file path="../ccs/msp432p401r.cmd" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+    </project>
+</projectSpec>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IAR Project Connection File -->
+
+<iarProjectConnection version="1.2" name="EMPTY" oneShot="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="IarProjectConnection_1.2.xsd">
+
+    <device>
+        <name>MSP432P401R</name>
+    </device>
+
+    <asmIncludePath>
+        <path>$PROJ_DIR$</path>
+        <path>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source</path>
+        <path>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source/third_party/CMSIS/Include</path>
+    </asmIncludePath>
+
+    <asmDefines>
+        <define>__MSP432P401R__</define>
+        <define>DeviceFamily_MSP432P401x</define>
+    </asmDefines>
+
+    <includePath>
+        <path>$PROJ_DIR$</path>
+        <path>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source</path>
+        <path>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source/third_party/CMSIS/Include</path>
+    </includePath>
+
+    <defines>
+        <define>__MSP432P401R__</define>
+        <define>DeviceFamily_MSP432P401x</define>
+    </defines>
+
+    <extraOptions>
+        <args>
+            <arg>--debug</arg>
+            <arg>--silent</arg>
+            <arg>-e</arg>
+            <arg>--aeabi</arg>
+            <arg>--thumb</arg>
+            <arg>--diag_suppress=Pa050</arg>
+        </args>
+    </extraOptions>
+
+    <linkerFile>
+        <override>true</override>
+        <path>$PROJ_DIR$/msp432p401r.icf</path>
+    </linkerFile>
+
+    <linkerExtraOptions>
+        <args>
+            <arg>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source/ti/display/lib/display.arm4f</arg>
+            <arg>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source/ti/grlib/lib/iar/m4f/grlib.a</arg>
+            <arg>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source/third_party/spiffs/lib/iar/m4f/spiffs.a</arg>
+            <arg>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source/ti/drivers/lib/drivers_msp432p401x.arm4f</arg>
+            <arg>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source/third_party/fatfs/lib/iar/m4f/fatfs.a</arg>
+            <arg>$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/source/ti/devices/msp432p4xx/driverlib/iar/msp432p4xx_driverlib.a</arg>
+            <arg>--silent</arg>
+            <arg>--cpu=Cortex-M4F</arg>
+        </args>
+    </linkerExtraOptions>
+
+    <customBuildTools>
+    </customBuildTools>
+
+    <heaps>
+        <heap> <!-- If omitted, id="0" -->
+            <size>0</size>
+        </heap>
+        <heap id="1">
+            <size>0</size>
+        </heap>
+    </heaps>
+    <stacks>
+        <stack> <!-- If omitted, id="0" -->
+            <size>512</size>
+        </stack>
+    </stacks>
+
+
+    <files>
+        <path copyTo="$PROJ_DIR$/main.c">$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/examples/nortos/MSP_EXP432P401R/driverlib/empty/main.c</path>
+        <path copyTo="$PROJ_DIR$/system_msp432p401r.c">$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/examples/nortos/MSP_EXP432P401R/driverlib/empty/system_msp432p401r.c</path>
+        <path copyTo="$PROJ_DIR$/msp432p401r.icf">$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/examples/nortos/MSP_EXP432P401R/driverlib/empty/iar/msp432p401r.icf</path>
+        <group name="iar" build="true">
+            <path copyTo="$PROJ_DIR$/iar/startup_msp432p401r_ewarm.c">$SIMPLELINK_MSP432_SDK_INSTALL_DIR$/examples/nortos/MSP_EXP432P401R/driverlib/empty/iar/startup_msp432p401r_ewarm.c</path>
+        </group>
+    </files>
+</iarProjectConnection>

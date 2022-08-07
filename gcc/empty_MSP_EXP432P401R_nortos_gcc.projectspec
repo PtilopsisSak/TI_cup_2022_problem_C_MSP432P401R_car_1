@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+    <applicability>
+        <when>
+            <context
+                deviceFamily="MSP432"
+                deviceId="MSP432P401R"
+            />
+        </when>
+    </applicability>
+
+    <project
+        title="EMPTY"
+        name="empty_MSP_EXP432P401R_nortos_gcc"
+        configurations="Debug"
+        toolChain="GNU"
+        connection="TIXDS110_Connection.xml"
+        device="MSP432P401R"
+        ignoreDefaultDeviceSettings="true"
+        ignoreDefaultCCSSettings="true"
+        products="com.ti.SIMPLELINK_MSP432_SDK"
+        compilerBuildOptions="
+            -I${PROJECT_ROOT}
+            -I${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source
+            -I${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source/third_party/CMSIS/Include
+            -D__MSP432P401R__
+            -DDeviceFamily_MSP432P401x
+            -mcpu=cortex-m4
+            -march=armv7e-m
+            -mthumb
+            -std=c99
+            -std=c++11
+            -mfloat-abi=hard
+            -mfpu=fpv4-sp-d16
+            -ffunction-sections
+            -fdata-sections
+            -g
+            -gstrict-dwarf
+            -Wall
+            -I${CG_TOOL_ROOT}/arm-none-eabi/include/newlib-nano
+            -I${CG_TOOL_ROOT}/arm-none-eabi/include
+        "
+        linkerBuildOptions="
+            -L${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source
+            -l:ti/display/lib/display.am4fg
+            -l:ti/grlib/lib/gcc/m4f/grlib.a
+            -l:third_party/spiffs/lib/gcc/m4f/spiffs.a
+            -l:ti/drivers/lib/drivers_msp432p401x.am4fg
+            -l:third_party/fatfs/lib/gcc/m4f/fatfs.a
+            -l:ti/devices/msp432p4xx/driverlib/gcc/msp432p4xx_driverlib.a
+            -march=armv7e-m
+            -mthumb
+            -mfloat-abi=hard
+            -mfpu=fpv4-sp-d16
+            -static
+            -Wl,--gc-sections
+            -L${CG_TOOL_ROOT}/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard
+            -lgcc
+            -lc
+            -lm
+            -lnosys
+            --specs=nano.specs
+        "
+        description="TODO: Write description">
+
+        <property name="buildProfile" value="release"/>
+        <property name="isHybrid" value="true"/>
+        <group id="empty.SIMPLELINK_MSP432_SDK.MSP_EXP432P401R.driverlib.GCC"/>
+        <file path="../main.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../system_msp432p401r.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../gcc/startup_msp432p401r_gcc.c" openOnCreation="false" excludeFromBuild="false" action="copy" targetDirectory="gcc">
+        </file>
+        <file path="../gcc/msp432p401r.lds" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+    </project>
+</projectSpec>
